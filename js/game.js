@@ -9,8 +9,25 @@ function Princess(arena) {
   this.initDisplay();
 }
 
+function Cake(arena, x, y) {
+  this.$arena = arena;
+  this.x = x;
+  this.y = y;
+  // this.dir = "sitting there like a fatass";
+  this.height = 34;
+  this.width = 34;
+  this.cakeDisplay();
+}
+
+Cake.prototype.cakeDisplay = function() {
+  this.$cake = $("<div class='cake'></div>")
+  $('#arena').append(this.$cake);
+
+  this.updateCakeDisplay();
+}
+
 Princess.prototype.initDisplay = function() {
-  this.$princess = $("<div class='princess'></div>")
+  this.$princess = $("<div id='princess'></div>")
   $('#arena').append(this.$princess);
 
   this.updateDisplay();
@@ -49,10 +66,15 @@ Princess.prototype.updateDisplay = function () {
   this.$princess.css('left', this.x - this.width / 2);
 }
 
+Cake.prototype.updateCakeDisplay = function () {
+  this.$cake.css('top', this.y - this.height / 2);
+  this.$cake.css('left', this.x - this.width / 2);
+}
+
 function Game() {
   this.$arena = $('#arena');
   this.princess = new Princess(this.$arena);
-  // this.$cakes = [new Cake(this.$arena)];
+  this.cake = [new Cake(this.$arena, 400, 400)];
   // this.$carrots = [new Carrot(this.$arena)];
 }
 

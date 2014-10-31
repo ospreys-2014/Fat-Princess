@@ -1,7 +1,7 @@
 #arena {
   width: 800;
   height: 800;
-  border: 1px solid pink;
+  border: 3px solid pink;
 }
 
 #princess {
@@ -12,8 +12,10 @@
   width: 32px;
 }
 
-/*.cake {
+.cake {
+  position: relative;
   background-image: url('../imgs/cake.png');
+  background-repeat: no-repeat;
   height: 34px;
   width: 34px;
 }
@@ -22,6 +24,6 @@
   background-image: url('../imgs/carrot.png');
   height: 34px;
   width: 34px;
-}*/
+}
 
 
