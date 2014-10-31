@@ -4,7 +4,7 @@ function Princess(arena) {
   this.x = this.$arena.width() / 2;
   this.y = this.$arena.height() / 2;
   this.dir = "sitting there like a fatass";
-  this.speed = 10;
+  this.speed = 5;
   this.height = 32;
   this.width = 32;
   this.initDisplay();
@@ -12,11 +12,11 @@ function Princess(arena) {
 
 function Cake(arena, x, y) {
   this.$arena = arena;
-  this.x = x;
-  this.y = y;
   // this.dir = "sitting there like a fatass";
   this.height = 34;
   this.width = 34;
+  this.x = x+this.width/2;
+  this.y = y+this.height/2;
   this.cakeDisplay();
 }
 
@@ -37,13 +37,22 @@ Princess.prototype.initDisplay = function() {
 Princess.prototype.eatCake = function (cake) {
   if (Math.sqrt(Math.pow((this.x-cake.x),2)+Math.pow(this.y-cake.y,2)) < (cake.width+this.width)/2)
     {
-    cake.x = Math.random(100,700)*800;
-    cake.y = Math.random(100,700)*800;
+    cake.x = Math.random(200,650)*800;
+    cake.y = Math.random(200,650)*800;
+    this.fattenBooty();
     cake.updateCakeDisplay();
     console.log("cake eaten");
     }
   console.log("im eating cakes");
 }
+
+Princess.prototype.fattenBooty = function () {
+  this.height += 50;
+  this.width += 50;
+  $('#princess').css({height: this.height, width: this.width});
+  this.updateDisplay();
+}
+
 
 Princess.prototype.move = function() {
   old_x = this.x;
