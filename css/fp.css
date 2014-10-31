@@ -1,0 +1,25 @@
+#arena {
+  width: 800;
+  height: 800;
+  border: 1px solid pink;
+}
+
+#princess {
+  background-image: url('../imgs/princess_front.gif');
+  height: 32px;
+  width: 32px;
+}
+
+.cake {
+  background-image: url('../imgs/cake.png');
+  height: 34px;
+  width: 34px;
+}
+
+.carrot {
+  background-image: url('../imgs/carrot.png');
+  height: 34px;
+  width: 34px;
+}
+
+
