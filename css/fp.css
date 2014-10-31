@@ -5,12 +5,14 @@
 }
 
 #princess {
+  position: relative;
   background-image: url('../imgs/princess_front.gif');
+  background-repeat: no-repeat;
   height: 32px;
   width: 32px;
 }
 
-.cake {
+/*.cake {
   background-image: url('../imgs/cake.png');
   height: 34px;
   width: 34px;
@@ -20,6 +22,6 @@
   background-image: url('../imgs/carrot.png');
   height: 34px;
   width: 34px;
-}
+}*/
 
 

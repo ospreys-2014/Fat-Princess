@@ -44,17 +44,19 @@ Princess.prototype.inBounds = function () {
   return (this.x > this.width / 2 && this.x < this.$arena.width() - this.width / 2 && this.y > this.height / 2 && this.y < this.$arena.height() - this.height / 2)
 }
 
-
-
-
-function Game () {
-  this.$arena = $('#arena');
-  this.$princess = new Princess(this.$arena);
-  this.$cakes = [new Cake(this.$arena)];
-  this.$carrots = [new Carrot(this.$arena)];
+Princess.prototype.updateDisplay = function () {
+  this.$princess.css('top', this.y - this.height / 2);
+  this.$princess.css('left', this.x - this.width / 2);
 }
 
-Game.prototype.process = function() {
+function Game() {
+  this.$arena = $('#arena');
+  this.princess = new Princess(this.$arena);
+  // this.$cakes = [new Cake(this.$arena)];
+  // this.$carrots = [new Carrot(this.$arena)];
+}
+
+Game.prototype.loop = function() {
   this.princess.move();
 }
 
@@ -64,7 +66,7 @@ $(document).ready(function() {
 
   ['left','right','up','down'].forEach(function(direction) {
     Mousetrap.bind(direction, function() {
-      game.ninja.dir = direction;
+      game.princess.dir = direction;
     });
   });
 })
