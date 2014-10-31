@@ -1,9 +1,10 @@
+
 function Princess(arena) {
   this.$arena = arena;
   this.x = this.$arena.width() / 2;
   this.y = this.$arena.height() / 2;
   this.dir = "sitting there like a fatass";
-  this.speed = 3;
+  this.speed = 10;
   this.height = 32;
   this.width = 32;
   this.initDisplay();
@@ -31,6 +32,17 @@ Princess.prototype.initDisplay = function() {
   $('#arena').append(this.$princess);
 
   this.updateDisplay();
+}
+
+Princess.prototype.eatCake = function (cake) {
+  if (Math.sqrt(Math.pow((this.x-cake.x),2)+Math.pow(this.y-cake.y,2)) < (cake.width+this.width)/2)
+    {
+    cake.x = Math.random(100,700)*800;
+    cake.y = Math.random(100,700)*800;
+    cake.updateCakeDisplay();
+    console.log("cake eaten");
+    }
+  console.log("im eating cakes");
 }
 
 Princess.prototype.move = function() {
@@ -71,15 +83,10 @@ Cake.prototype.updateCakeDisplay = function () {
   this.$cake.css('left', this.x - this.width / 2);
 }
 
-function Game() {
-  this.$arena = $('#arena');
-  this.princess = new Princess(this.$arena);
-  this.cake = [new Cake(this.$arena, 400, 400)];
-  // this.$carrots = [new Carrot(this.$arena)];
-}
 
 Game.prototype.loop = function() {
   this.princess.move();
+  this.princess.eatCake(this.cake[0]);
 }
 
 $(document).ready(function() {
@@ -92,3 +99,10 @@ $(document).ready(function() {
     });
   });
 })
+
+function Game() {
+  this.$arena = $('#arena');
+  this.princess = new Princess(this.$arena);
+  this.cake = [new Cake(this.$arena, 600, 600)];
+  // this.$carrots = [new Carrot(this.$arena)];
+}
