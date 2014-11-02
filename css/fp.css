@@ -31,3 +31,9 @@
   height: 32px;
   width: 32px;
 }
+
+#scorebar {
+  width: 400;
+  height: 50;
+  border: 3px solid pink;
+}

@@ -7,6 +7,7 @@ function Princess(arena) {
   this.speed = 5;
   this.height = 32;
   this.width = 32;
+  this.score = 200;
   this.initDisplay();
 }
 
@@ -41,6 +42,8 @@ Princess.prototype.eatCake = function (cake) {
     cake.y = Math.random(200,650)*800;
     this.fattenBooty();
     cake.updateCakeDisplay();
+    this.score += 30;
+    console.log(this.score)
     console.log("cake eaten");
     }
   console.log("im eating cakes");
