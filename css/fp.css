@@ -4,6 +4,12 @@
   border: 3px solid pink;
 }
 
+#scorebar {
+  width: 400;
+  height: 50;
+  border: 3px solid pink;
+}
+
 #princess {
   position: relative;
   background-image: url('../imgs/princess_front.gif');
@@ -11,6 +17,12 @@
   background-size: 100% 100%;
   height: 32px;
   width: 32px;
+}
+
+#score {
+  font-size: 45px;
+  font-family: 'Sniglet', cursive;
+  color: green;
 }
 
 .cake {
@@ -32,8 +44,3 @@
   width: 32px;
 }
 
-#scorebar {
-  width: 400;
-  height: 50;
-  border: 3px solid pink;
-}
