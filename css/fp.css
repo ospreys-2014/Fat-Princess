@@ -4,7 +4,8 @@ body {
 }
 
 #arena {
-  display: inline-block;
+  display: block;
+  position: absolute;
   width: 800;
   height: 800;
   border-right: 15px solid #40e0d0;
@@ -15,7 +16,7 @@ body {
 }
 
 #princess {
-  position: relative;
+  position: absolute;
   background-image: url('../imgs/princess_front.gif');
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -24,7 +25,7 @@ body {
 }
 
 .cake {
-  position: relative;
+  position: absolute;
   background-image: url('../imgs/cake.png');
   background-repeat: no-repeat;
   height: 34px;
@@ -32,7 +33,7 @@ body {
 }
 
 .carrot {
-  position: relative;
+  position: absolute;
   background-image: url('../imgs/carrot.png');
   background-repeat: no-repeat;
   height: 34px;
@@ -45,6 +46,9 @@ body {
 }
 
 #scorebar {
+  display: block;
+  position: absolute;
+  top: 850px;
   width: 800;
   height: 110;
   border-right: 15px solid #40e0d0;
