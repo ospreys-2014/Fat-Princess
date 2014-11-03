@@ -1,8 +1,17 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
 #arena {
+  display: inline-block;
   width: 800;
   height: 800;
-  border: 5px solid black;
-  background-image: url('../imgs/pink.png');
+  border-right: 15px solid #40e0d0;
+  border-bottom: 15px solid LightGreen;
+  border-left: 15px solid LightGreen;
+  border-top: 15px solid #40e0d0;
+  background-image: url("../imgs/Chevron-Background.png");
 }
 
 #princess {
@@ -33,4 +42,20 @@
 #princess img {
   height: 32px;
   width: 32px;
+}
+
+#scorebar {
+  width: 800;
+  height: 110;
+  border-right: 15px solid #40e0d0;
+  border-bottom: 15px solid LightGreen;
+  border-left: 15px solid LightGreen;
+  border-top: 15px solid #40e0d0;
+}
+
+#score {
+  font-size: 45px;
+  font-family: 'Sniglet', cursive;
+  color: #D4EE5E;
+  background-color: #FF7070;
 }
