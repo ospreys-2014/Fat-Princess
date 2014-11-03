@@ -1,5 +1,4 @@
-
-function Princess(arena) {
+ function Princess(arena) {
   this.$arena = arena;
   this.x = this.$arena.width() / 2;
   this.y = this.$arena.height() / 2;
@@ -19,8 +18,6 @@ function Cake(arena, x, y) {
   this.cakeDisplay();
 }
 
-<<<<<<< HEAD
-=======
 function Carrot(arena, x, y) {
   this.$arena = arena;
   this.height = 34;
@@ -30,7 +27,6 @@ function Carrot(arena, x, y) {
   this.carrotDisplay();
 }
 
->>>>>>> 659b6a84d6478f7dc9f1aa95e4892961033ee0b6
 function Score(scorebar) {
   this.$scorebar = scorebar;
   this.pounds = 200;
@@ -38,12 +34,6 @@ function Score(scorebar) {
   this.scoreDisplay();
 }
 
-<<<<<<< HEAD
-Score.prototype.pounds = 200;
-Score.prototype.lives = 3;
-
-=======
->>>>>>> 659b6a84d6478f7dc9f1aa95e4892961033ee0b6
 Cake.prototype.cakeDisplay = function() {
   this.$cake = $("<div class='cake'></div>")
   $('#arena').append(this.$cake);
@@ -70,56 +60,31 @@ Score.prototype.scoreDisplay = function() {
   $('#scorebar').append(this.$score);
 }
 
-<<<<<<< HEAD
-Princess.prototype.eatCake = function (cake, score) {
-  if (Math.sqrt(Math.pow((this.x-cake.x),2)+Math.pow(this.y-cake.y,2)) < (cake.width+this.width)/2){
-      cake.x = Math.random(200,650)*800;
-      cake.y = Math.random(200,650)*800;
-      this.fattenBooty();
-      cake.updateCakeDisplay();
-      score.pounds = 30;
-      score.scoreDisplay();
-      console.log(score.pounds);
-      console.log("cake eaten");
-=======
 Princess.prototype.eatCake = function (cake) {
   if (Math.sqrt(Math.pow((this.x-cake.x),2)+Math.pow(this.y-cake.y,2)) < (cake.width+this.width)/2)
     {
-    nomCake.play();
-    cake.x = Math.random()*600;
-    cake.y = Math.random()*600;
-    this.fattenBooty();
-    cake.updateCakeDisplay();
-    console.log("cake eaten");
->>>>>>> 659b6a84d6478f7dc9f1aa95e4892961033ee0b6
+      nomCake.play();
+      cake.x = Math.random()*600;
+      cake.y = Math.random()*600;
+      this.fattenBooty();
+      cake.updateCakeDisplay();
     }
-  console.log("im eating cakes");
-
-  // if (score.lives == 0){
-  //   score.lives = "Game Over"
-  // }
 }
 
-<<<<<<< HEAD
-Princess.prototype.fattenBooty = function (score) {
-  this.height += 50;
-  this.width += 50;
-=======
 Princess.prototype.eatCarrot = function (carrot) {
   if (Math.sqrt(Math.pow((this.x-carrot.x),2)+Math.pow(this.y-carrot.y,2)) < (carrot.width+this.width)/2)
     {
-    nomCarrot.play();
-    carrot.x = Math.random()*600;
-    carrot.y = Math.random()*600;
-    this.skinnyBooty();
-    carrot.updateCarrotDisplay();
+      nomCarrot.play();
+      carrot.x = Math.random()*600;
+      carrot.y = Math.random()*600;
+      this.skinnyBooty();
+      carrot.updateCarrotDisplay();
     }
 }
 
 Princess.prototype.fattenBooty = function () {
   this.height += 20;
   this.width += 20;
->>>>>>> 659b6a84d6478f7dc9f1aa95e4892961033ee0b6
   $('#princess').css({height: this.height, width: this.width});
   this.updateDisplay();
 }
@@ -180,11 +145,6 @@ Cake.prototype.updateCakeDisplay = function () {
   this.$cake.css('left', this.x - this.width / 2);
 }
 
-<<<<<<< HEAD
-Game.prototype.loop = function() {
-  this.princess.move();
-  this.princess.eatCake(this.cake[0], score);
-=======
 Carrot.prototype.updateCarrotDisplay = function () {
   this.$carrot.css('top', this.y - this.height / 2);
   this.$carrot.css('left', this.x - this.width / 2);
@@ -196,8 +156,12 @@ Carrot.prototype.updateCarrotDisplay = function () {
 Game.prototype.loop = function() {
   this.princess.move();
   this.princess.eatCake(this.cake[0],  score);
+  this.princess.eatCake(this.cake[1],  score);
+  this.princess.eatCake(this.cake[2],  score);
+
   this.princess.eatCarrot(this.carrot[0],  score);
->>>>>>> 659b6a84d6478f7dc9f1aa95e4892961033ee0b6
+  this.princess.eatCarrot(this.carrot[1],  score);
+  this.princess.eatCarrot(this.carrot[2],  score);
 }
 
 $(document).ready(function() {
@@ -215,9 +179,8 @@ function Game() {
   this.$arena = $('#arena');
   this.$scorebar = $('#scorebar');
   this.princess = new Princess(this.$arena);
-  this.cake = [new Cake(this.$arena, 600, 600)];
-  this.carrot = [new Carrot(this.$arena, 200, 200)];
+  this.cake = [new Cake(this.$arena, 120, 50),new Cake(this.$arena, 50, 600),new Cake(this.$arena, 700, 350)];
+  this.carrot = [new Carrot(this.$arena, 200, 120), new Carrot(this.$arena, 300, 400),new Carrot(this.$arena, 500, 350)];
   this.score = new Score(this.$scorebar);
   // this.$carrots = [new Carrot(this.$arena)];
-  this.score = new Score(this.$scorebar);
 }
