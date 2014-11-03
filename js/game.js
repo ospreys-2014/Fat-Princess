@@ -23,6 +23,7 @@ function Cake(arena, x, y) {
 function Score(scorebar) {
   this.$scorebar = scorebar;
   this.pounds = 200;
+  this.lives = 3;
   this.scoreDisplay();
 }
 
@@ -41,23 +42,26 @@ Princess.prototype.initDisplay = function() {
 }
 
 Score.prototype.scoreDisplay = function() {
-  this.$score = $("<div id='score'>POUNDS:"+this.pounds+"</div>")
+  this.$score = $("<div id='score'>POUNDS:"+this.pounds+"<br>LIVES:"+this.lives+"</div>")
   $('#scorebar').append(this.$score);
 
   this.updateScore();
 }
 
-Princess.prototype.eatCake = function (cake, score) {
+Princess.prototype.eatCake = function (cake) {
   if (Math.sqrt(Math.pow((this.x-cake.x),2)+Math.pow(this.y-cake.y,2)) < (cake.width+this.width)/2)
     {
-    cake.x = Math.random(200,650)*800;
-    cake.y = Math.random(200,650)*800;
-    this.fattenBooty();
-    cake.updateCakeDisplay();
-    this.updateScore();
-    console.log("cake eaten");
+      cake.x = Math.random(200,650)*800;
+      cake.y = Math.random(200,650)*800;
+      this.fattenBooty();
+      cake.updateCakeDisplay();
+      console.log("cake eaten");
     }
   console.log("im eating cakes");
+
+  // if (score.lives == 0){
+  //   score.lives = "Game Over"
+  // }
 }
 
 Princess.prototype.fattenBooty = function () {
@@ -133,5 +137,5 @@ function Game() {
   this.princess = new Princess(this.$arena);
   this.cake = [new Cake(this.$arena, 600, 600)];
   // this.$carrots = [new Carrot(this.$arena)];
-  this.score = [new Score(this.$scorebar)];
+  this.score = new Score(this.$scorebar);
 }
