@@ -1,7 +1,17 @@
+body {
+  padding: 0;
+  margin: 0;
+}
+
 #arena {
+  display: inline-block;
   width: 800;
   height: 800;
-  border: 3px solid pink;
+  border-right: 15px solid #40e0d0;
+  border-bottom: 15px solid LightGreen;
+  border-left: 15px solid LightGreen;
+  border-top: 15px solid #40e0d0;
+  background-image: url("../imgs/Chevron-Background.png");
 }
 
 #scorebar {
@@ -34,7 +44,9 @@
 }
 
 .carrot {
+  position: relative;
   background-image: url('../imgs/carrot.png');
+  background-repeat: no-repeat;
   height: 34px;
   width: 34px;
 }
@@ -44,3 +56,21 @@
   width: 32px;
 }
 
+<<<<<<< HEAD
+=======
+#scorebar {
+  width: 800;
+  height: 110;
+  border-right: 15px solid #40e0d0;
+  border-bottom: 15px solid LightGreen;
+  border-left: 15px solid LightGreen;
+  border-top: 15px solid #40e0d0;
+}
+
+#score {
+  font-size: 45px;
+  font-family: 'Sniglet', cursive;
+  color: #D4EE5E;
+  background-color: #FF7070;
+}
+>>>>>>> 659b6a84d6478f7dc9f1aa95e4892961033ee0b6
