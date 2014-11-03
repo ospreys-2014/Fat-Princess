@@ -61,7 +61,7 @@ Score.prototype.scoreDisplay = function() {
   $('#scorebar').append(this.$score);
 }
 
-Princess.prototype.eatCake = function (cake) {
+Princess.prototype.eatCake = function (cake,score) {
   if (Math.sqrt(Math.pow((this.x-cake.x),2)+Math.pow(this.y-cake.y,2)) < (cake.width+this.width)/2)
     {
     nomCake.play();
@@ -69,18 +69,23 @@ Princess.prototype.eatCake = function (cake) {
     cake.y = Math.random()*600;
     this.fattenBooty();
     cake.updateCakeDisplay();
+    score.pounds+=100;
+    score.updateScore();
     console.log("cake eaten");
     }
   console.log("im eating cakes");
 }
 
-Princess.prototype.eatCarrot = function (carrot) {
+Princess.prototype.eatCarrot = function (carrot,score) {
   if (Math.sqrt(Math.pow((this.x-carrot.x),2)+Math.pow(this.y-carrot.y,2)) < (carrot.width+this.width)/2)
     {
     nomCarrot.play();
     carrot.x = Math.random()*600;
     carrot.y = Math.random()*600;
     this.skinnyBooty();
+    score.pounds-=100;
+    score.lives-=1;
+    score.updateScore();
     carrot.updateCarrotDisplay();
     }
 }
@@ -152,14 +157,21 @@ Carrot.prototype.updateCarrotDisplay = function () {
   this.$carrot.css('top', this.y - this.height / 2);
   this.$carrot.css('left', this.x - this.width / 2);
 }
+
+Score.prototype.updateScore = function(){
+  console.log(this.pounds);
+  $('#score').html("<div id='score'>POUNDS: "+this.pounds+"<br>LIVES: "+this.lives+"</div>");
+  // this.$score.css("<div id='score'>POUNDS: "+this.pounds+"<br>LIVES: "+this.lives+"</div>")
+  // $('#scorebar').html(this.$score);
+};
 ///////////////////////////
 ///    Game Creation    ///
 ///////////////////////////
 
 Game.prototype.loop = function() {
   this.princess.move();
-  this.princess.eatCake(this.cake[0],  score);
-  this.princess.eatCarrot(this.carrot[0],  score);
+  this.princess.eatCake(this.cake[0],  this.score);
+  this.princess.eatCarrot(this.carrot[0],  this.score);
 }
 
 $(document).ready(function() {
