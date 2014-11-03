@@ -57,12 +57,12 @@ Carrot.prototype.carrotDisplay = function() {
 Princess.prototype.eatCake = function(cake) {
   if (Math.sqrt(Math.pow((this.x-cake.x),2)+Math.pow(this.y-cake.y,2)) < (cake.width+this.width)/2)
     {
-    cake.x = Math.floor(Math.random(200,650)*800);
-    cake.y = Math.floor(Math.random(200,650)*800);
+    nomCake.play();
+    cake.x = Math.floor(Math.random()*600);
+    cake.y = Math.floor(Math.random()*600);
     this.fattenBooty();
     cake.updateCakeDisplay();
     // console.log("cake eaten");
-    // cake.populate();
     }
   // console.log("im eating cakes");
 }
@@ -70,6 +70,7 @@ Princess.prototype.eatCake = function(cake) {
 Princess.prototype.eatCarrot = function(carrot) {
   if (Math.sqrt(Math.pow((this.x-carrot.x),2)+Math.pow(this.y-carrot.y,2)) < (carrot.width+this.width)/2)
     {
+    nomCarrot.play();
     carrot.x = Math.floor(Math.random(200,650)*800);
     carrot.y = Math.floor(Math.random(200,650)*800);
     this.loseWeight();
@@ -80,8 +81,8 @@ Princess.prototype.eatCarrot = function(carrot) {
 }
 
 Princess.prototype.fattenBooty = function() {
-  this.height += 10;
-  this.width += 10;
+  this.height += 15;
+  this.width += 15;
   $('#princess').css({height: this.height, width: this.width});
   this.updateDisplay();
 }
@@ -93,11 +94,7 @@ Princess.prototype.loseWeight = function () {
   this.updateDisplay();
 }
 
-// Cake.prototype.populate = function() {
-//   new Cake(this.$arena, 700, 700);
-//   console.log("carrot eaten");
-//   this.cakeDisplay();
-// }
+
 
 Princess.prototype.move = function() {
   old_x = this.x;
@@ -123,9 +120,14 @@ Princess.prototype.move = function() {
   this.updateDisplay();
 }
 
+var nomCake = new Audio('cakenom.wav');
+var nomCarrot = new Audio('ew.wav');
+
+
 Princess.prototype.inBounds = function () {
   return (this.x > this.width / 2 && this.x < this.$arena.width() - this.width / 2 && this.y > this.height / 2 && this.y < this.$arena.height() - this.height / 2)
 }
+
 
 Princess.prototype.updateDisplay = function () {
   this.$princess.css('top', this.y - this.height / 2);

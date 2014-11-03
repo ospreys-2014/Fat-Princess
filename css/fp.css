@@ -1,7 +1,14 @@
+
+
 #arena {
+  display: inline-block;
   width: 800;
   height: 800;
-  border: 3px solid pink;
+  border-right: 15px solid #40e0d0;
+  border-bottom: 15px solid LightGreen;
+  border-left: 15px solid LightGreen;
+  border-top: 15px solid #40e0d0;
+  background-image: url("../imgs/Chevron-Background.png");
 }
 
 #princess {
@@ -22,12 +29,19 @@
 }
 
 .carrot {
+  position: relative;
   background-image: url('../imgs/carrot.png');
+  background-repeat: no-repeat;
   height: 34px;
   width: 34px;
 }
 
-#princess img {
+/*.princess img {
   height: 32px;
   width: 32px;
 }
+
+.carrot img {
+  height: 32px;
+  width: 32px;
+}*/
