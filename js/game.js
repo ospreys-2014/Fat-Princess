@@ -65,8 +65,8 @@ Princess.prototype.eatCake = function (cake,score) {
   if (Math.sqrt(Math.pow((this.x-cake.x),2)+Math.pow(this.y-cake.y,2)) < (cake.width+this.width)/2)
     {
     nomCake.play();
-    cake.x = Math.random()*600;
-    cake.y = Math.random()*600;
+    cake.x = Math.floor(Math.random() * 600) + 100//Math.random()*600;
+    cake.y = Math.floor(Math.random() * 600) + 100//Math.random()*600;
     this.fattenBooty();
     cake.updateCakeDisplay();
     score.pounds+=100;
@@ -80,8 +80,8 @@ Princess.prototype.eatCarrot = function (carrot,score) {
   if (Math.sqrt(Math.pow((this.x-carrot.x),2)+Math.pow(this.y-carrot.y,2)) < (carrot.width+this.width)/2)
     {
     nomCarrot.play();
-    carrot.x = Math.random()*600;
-    carrot.y = Math.random()*600;
+    carrot.x = Math.floor(Math.random() * 600) + 100
+    carrot.y = Math.floor(Math.random() * 600) + 100
     this.skinnyBooty();
     score.pounds-=100;
     score.lives-=1;
