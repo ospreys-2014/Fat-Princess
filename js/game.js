@@ -85,6 +85,9 @@ Princess.prototype.eatCarrot = function (carrot,score) {
     this.skinnyBooty();
     score.pounds-=100;
     score.lives-=1;
+    if (score.lives==0) {
+      alert("My anaconda don't want none unless...");
+    }
     score.updateScore();
     carrot.updateCarrotDisplay();
     }
