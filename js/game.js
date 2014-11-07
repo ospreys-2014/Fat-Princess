@@ -60,26 +60,34 @@ Score.prototype.scoreDisplay = function() {
   $('#scorebar').append(this.$score);
 }
 
-Princess.prototype.eatCake = function (cake) {
+Princess.prototype.eatCake = function (cake,score) {
   if (Math.sqrt(Math.pow((this.x-cake.x),2)+Math.pow(this.y-cake.y,2)) < (cake.width+this.width)/2)
     {
     nomCake.play();
-    cake.x = Math.random()*600;
-    cake.y = Math.random()*600;
+    cake.x = Math.floor(Math.random() * 600) + 100//Math.random()*600;
+    cake.y = Math.floor(Math.random() * 600) + 100//Math.random()*600;
     this.fattenBooty();
     cake.updateCakeDisplay();
+    score.pounds+=100;
+    score.updateScore();
     console.log("cake eaten");
     }
   console.log("im eating cakes");
 }
 
-Princess.prototype.eatCarrot = function (carrot) {
+Princess.prototype.eatCarrot = function (carrot,score) {
   if (Math.sqrt(Math.pow((this.x-carrot.x),2)+Math.pow(this.y-carrot.y,2)) < (carrot.width+this.width)/2)
     {
     nomCarrot.play();
-    carrot.x = Math.random()*600;
-    carrot.y = Math.random()*600;
+    carrot.x = Math.floor(Math.random() * 600) + 100
+    carrot.y = Math.floor(Math.random() * 600) + 100
     this.skinnyBooty();
+    score.pounds-=100;
+    score.lives-=1;
+    if (score.lives==0) {
+      alert("My anaconda don't want none unless...");
+    }
+    score.updateScore();
     carrot.updateCarrotDisplay();
     }
 }
@@ -118,6 +126,23 @@ Princess.prototype.move = function() {
   if (! this.inBounds()) {
     this.x = old_x;
     this.y = old_y;
+    if (! this.inBounds()) {
+      if (this.$arena.width() < this.x + (this.width / 2)) {
+        this.x = this.$arena.width() - (this.width / 2)
+      }
+
+      if ( 0 > this.x - (this.width / 2)) {
+        this.x = (this.width / 2)
+      }
+
+      if (this.$arena.height() < this.y + (this.height / 2)) {
+        this.y = this.$arena.height() - (this.height / 2)
+      }
+
+      if ( 0 > this.y - (this.height / 2)) {
+        this.y = (this.height / 2)
+      }
+    }
   }
   this.updateDisplay();
 }
@@ -152,14 +177,21 @@ Carrot.prototype.updateCarrotDisplay = function () {
   this.$carrot.css('left', this.x - this.width / 2);
 }
 
+Score.prototype.updateScore = function(){
+  console.log(this.pounds);
+  $('#score').html("<div id='score'>POUNDS: "+this.pounds+"<br>LIVES: "+this.lives+"</div>");
+  // this.$score.css("<div id='score'>POUNDS: "+this.pounds+"<br>LIVES: "+this.lives+"</div>")
+  // $('#scorebar').html(this.$score);
+};
+
 ///////////////////////////
 ///    Game Creation    ///
 ///////////////////////////
 
 Game.prototype.loop = function() {
   this.princess.move();
-  this.princess.eatCake(this.cake[0],  score);
-  this.princess.eatCarrot(this.carrot[0],  score);
+  this.princess.eatCake(this.cake[0],  this.score);
+  this.princess.eatCarrot(this.carrot[0],  this.score);
 }
 
 $(document).ready(function() {
