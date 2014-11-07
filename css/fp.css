@@ -56,6 +56,6 @@ body {
 #score {
   font-size: 45px;
   font-family: 'Sniglet', cursive;
-  color: #D4EE5E;
-  background-color: #FF7070;
+  text-shadow: 4px 4px 2px rgba(233,0,117, 0.8);
+  background-color: #D5FDD5;
 }

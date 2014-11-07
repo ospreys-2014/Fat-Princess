@@ -1,4 +1,3 @@
-
 function Princess(arena) {
   this.$arena = arena;
   this.x = this.$arena.width() / 2;
@@ -152,6 +151,7 @@ Carrot.prototype.updateCarrotDisplay = function () {
   this.$carrot.css('top', this.y - this.height / 2);
   this.$carrot.css('left', this.x - this.width / 2);
 }
+
 ///////////////////////////
 ///    Game Creation    ///
 ///////////////////////////
