@@ -1,5 +1,5 @@
 #Fat Princess
-You control the princess, guide her to the cake (she is oh so hungry), avoid the carrots (she doesnt like the veggies)
+You control the princess, guide her to the cake (she is oh so hungry), avoid the carrots (she doesn't like the veggies)
 
 ####How to install:
 Clone the repo and open the HTML file! Have fun making her fat!!!
